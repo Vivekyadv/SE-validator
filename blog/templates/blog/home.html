@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="jumbotron text-center">
+  <div class="container">
+     <h1><b>  IP/MAC Validator</b></h1>
+     <p style="text-align:left" class="lead text-muted">Validator is web application which allows you to validate IP and MAC addresses. This web application use RE pattern to check validation. You can check whether ip/mac addresses are valid or not.</p>
+     <img class="img-fluid" src="{% static 'mac_address.jpg' %}" width="600" />
+     <p> <br>
+
+       {% if user.is_authenticated %}
+
+
+       <a href="{% url 'ip' %}" class="btn btn-primary my-2">IP Validator</a>
+       <a href="{% url 'mac' %}" class="btn btn-primary my-2">MAC Validator</a>
+     
+      {% else %}
+
+        <h5 style="text-align:left">Welcome to IP/MAC Validator, a web application which allows you to validate your IP/MAC address. <b>You are currently viewing this page as a guest.</b> Ip and MAC are sensitive information and hence you can't access this application without login. Registration is quick, simple and absolutely free. Join our community today!
+
+        </h5>
+
+      {% endif %}
+
+     </p> <br>
+
+     <h3 style="text-align:left"><b>IP Address</b></h3>
+     <h5 style="text-align:left"> 
+         IP Address is an address having information about how to reach a specific host, especially outside the LAN. An IP address is a 32 bit unique address having an address space of 2<sup>32</sup>. Every device on internet has ip address to communicate with other devices.
+         Generally, there are two notations in which IP address is written, dotted decimal notation and hexadecimal notation.<br><br>
+         Some points to be noted about dotted decimal notation:<br>
+
+        1. The value of any segment (byte) is between 0 and 255 (both included). <br>
+        2. There are no zeroes preceding the value in any segment (054 is wrong, 54 is correct). <br>
+     </h5>
+
+     <h3 style="text-align:left"><b>MAC Address</b></h3>
+     <h5 style="text-align:left;"> 
+        A media access control address (MAC address) is a unique identifier assigned to a network interface controller (NIC) for use as a network address in communications within a network segment. As typically represented, MAC addresses are recognizable as six groups of two hexadecimal digits, separated by hyphens or colons.
+     </h5>
+
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="jumbotron text-center">
+  <div class="container">
+     <h1><b> About the Validator</b></h1>
+     
+
+        <h5 style="text-align:left">A validator is a computer program used to check the validity or syntactical correctness of a fragment of code or document. The term is commonly used in the context of validating HTML, CSS, and XML documents like RSS feeds, though it can be used for any defined format or language. <br><br>
+
+        By using a validation program to systematically flag errors, the HTML user can choose whether to correct code mistakes on a case-by-case basis or correct them globally by using a "find and replace" mechanism within the program. <br><br>
+
+        IP and MAC are sensitive information and hence users can't access this application without login. Registration is quick, simple and absolutely free.The <a href="{% url 'login' %}">Login page</a> will allow the user to gain access to the <a href="{% url 'home' %}">Validator</a> by entering their username and password. <br><br>
+
+        Approach: The idea is to use <a href="https://www.javatpoint.com/automata-regular-expression">Regular Expression</a> to solve this problem.
+        To validate the IP (or MAC) address we should follow these steps:<br><br>
+        <ul>
+          <li>Tokenize the string (IP address) using the dot “.” delimiter </li>
+          <li>If the sub strings are containing any non-numeric character, then return false</li>
+          <li>If the number in each token is not in range 0 to 255, then return false</li>
+          <li>If there are exactly three dots and four parts then it is a valid IP address</li>
+        </ul>
+        </h5>
+
+     <h3 style="text-align:left"><b>Contact us</b></h3>
+     <h5 style="text-align:left;"> 
+        For further information or suggestion you can contact us<br>
+        <a href="github.com/vivekyadv" >Vivek Yadav </a>(creater)<br>
+        Email: vivekyadav_2k18it135@dtu.ac.in <br>
+        Phone no : +917838146914 <br>
+
+     </h5>
+
+  </div>
+</section>
+
+{% endblock %}

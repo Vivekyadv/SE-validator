@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="jumbotron text-left">
+  <div class="container">
+     <h1><b>MAC Validator</b></h1><br>
+
+    {% if user.is_authenticated %}
+     
+    <h4><b>How to check valid MAC address?</b></h4>
+    <h5> 
+        In order to help your programming or testing tasks, we have designed this online tool for you to validate any given MAC address. All you need to do is to enter a MAC address and click the "Validate" button. 
+     </h5>
+
+    <body onload='document.form.text.focus()'>
+       
+       <form name="form" action="#"> 
+          <b>Enter MAC Address: </b><input type='text' name='text'/>
+          <button class="button" onclick="ValidateMACaddress(document.form.text)"/>Validate</button>
+       </form>
+
+       <script>
+         function ValidateMACaddress(inputText)
+           {
+            var macformat = /^(([A-Fa-f0-9]{2}[:-]){5}[A-Fa-f0-9]{2}[,]?)+$/i;
+            if(inputText.value.match(macformat))
+              {
+                newval = inputText.value
+                alert("This is Valid MAC address");
+                document.form.text.focus();
+                return true;
+              }
+            else
+              {
+                alert("This is Invalid MAC address!");
+                document.form.text.focus();return false;
+              }
+           }
+
+       </script>
+    </body><br>
+
+      {% else %}
+
+        <h5>Welcome to MAC Validator, a web application which allows you to validate your MAC address. <b>You are currently viewing this page as a guest.</b> Ip and MAC are sensitive information and hence you can't access this application without login. Registration is quick, simple and absolutely free. Join our community today!<br><br>
+
+        </h5>
+
+      {% endif %}
+
+    <h3><b>What is MAC address?</b></h3>
+    <img class="img-fluid" src="{% static 'mac.png' %}" width="600" /> <br><br>
+
+     <h5> 
+      A media access control address (MAC address) is a unique identifier assigned to a network interface controller (NIC) for use as a network address in communications within a network segment. As typically represented, MAC addresses are recognizable as six groups of two hexadecimal digits, separated by hyphens or colons. This format gives 281,474,976,710,656 possible unique MAC addresses.<br><br>
+
+      IEEE 802 standards define 2 commonly used formats to print a MAC address in hexadecimal digits: <br><br>
+
+      <ul>
+        <li>  Six groups of two hexadecimal digits separated by hyphens (-), like 01-23-45-67-89-ab </li>
+        <li>  Six groups of two hexadecimal digits separated by colons (:), like 01:23:45:67:89:ab </li>
+      </ul>
+       <b>Here are some OUI of well known manufacturers :</b><br>
+
+       CC:46:D6 - Cisco <br>
+       3C:5A:B4 - Google, Inc. <br>
+       3C:D9:2B - Hewlett Packard <br>
+       00:9A:CD - HUAWEI TECHNOLOGIES CO.,LTD<br>
+     </h5><br>
+
+    <h4><b>Structure of MAC address?</b></h4>
+
+    <h5> 
+     	MAC Address is a 48-bits hardware number of a computer, which is embedded into network card (NIC). It has 6 groups of two hexadecimal digits (0-9, a-f). These pair of hexadecimal digits are separated by hyphens (-) or colons (:). Example like 01-23-45-67-89-ab. Following picture shows the internal structure of MAC address: <br><br>
+
+      <img class="img-fluid" src="{% static 'MAC-Address-Structure.jpg' %}" width="600" /> <br><br>
+
+      MAC address is 6 bytes (48 bits), The first 3 bytes (24 bits) represent the manufacturer of the card and the last 3 bytes (24 bits) identify the particular card from that manufacturer.
+    </h5>
+
+    {% if user.is_authenticated %}
+
+    <br><h5><b>Note: You can validate bunch of MAC Addresses from this <a href="{% static 'input_mac_file.txt' %}"> file</a> as a source file in code available <a href="{% static 'validate-mac.py' %}"> here</a></b></h5>
+
+    {% endif %}
+
+<style>
+.button {
+  background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+  </div>
+</section>
+
+{% endblock %}
